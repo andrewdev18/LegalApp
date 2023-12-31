@@ -1,0 +1,9 @@
+:host ::ng-deep .p-panel .p-panel-header {
+    padding: 1rem; 
+    background: var(--primary-color) !important; 
+    color: white !important; 
+} 
+
+:host ::ng-deep .p-inputnumber-input {
+    width: 100%;
+}

@@ -1,0 +1,323 @@
+<h2>Nueva venta</h2>
+<p-tabView [(activeIndex)]="activeIndex">
+    <p-tabPanel header="Datos">
+        <div class="flex flex-wrap">
+            <div class="w-12 md:w-6 p-2">
+                <p-panel header="Datos del cliente">
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed flex align-items-center w-10rem gap-2">
+                            <span class="pi pi-search"></span>
+                            <p class="m-0"><strong>Buscar Cliente</strong></p>
+                        </div>
+                        <div class="col">
+                            <input pInputText type="text" class="w-full">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed w-9rem">
+                            <p class="m-0"><strong>Razón Social</strong></p>
+                        </div>
+                        <div class="col">
+                            <p class="m-0">Nombre Apellido</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed w-9rem">
+                            <p class="m-0"><strong>Identificación</strong></p>
+                        </div>
+                        <div class="col">
+                            <p class="m-0">0000000000000</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed w-9rem">
+                            <p class="m-0"><strong>Dirección</strong></p>
+                        </div>
+                        <div class="col">
+                            <p class="m-0">Av. Ejemplo</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed w-9rem">
+                            <p class="m-0"><strong>Teléfono</strong></p>
+                        </div>
+                        <div class="col">
+                            <p class="m-0">04 000 000</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed w-9rem">
+                            <p class="m-0"><strong>Correo</strong></p>
+                        </div>
+                        <div class="col">
+                            <p class="m-0">{{'ejemplo@dominio.com'}}</p>
+                        </div>
+                    </div>
+                </p-panel>
+            </div>
+            <div class="w-12 md:w-6 p-2">
+                <p-panel header="Datos de la factura">
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed flex align-items-center w-10rem">
+                            <p class="m-0"><strong>Fecha</strong></p>
+                        </div>
+                        <div class="col">
+                            <p-calendar styleClass="w-full"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed flex align-items-center w-10rem">
+                            <p class="m-0"><strong>Sucursal</strong></p>
+                        </div>
+                        <div class="col">
+                            <input pInputText type="text" class="w-full">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed flex align-items-center w-10rem">
+                            <p class="m-0"><strong>Punto de Emisión</strong></p>
+                        </div>
+                        <div class="col">
+                            <input pInputText type="text" class="w-full">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="col-fixed flex align-items-start w-10rem">
+                            <p class="m-0"><strong>Observaciones</strong></p>
+                        </div>
+                        <div class="col">
+                            <textarea pInputTextarea type="text" class="w-full"></textarea>
+                        </div>
+                    </div>
+                </p-panel>
+            </div>
+        </div>
+        <div class="text-right p-2">
+            <p-button label="Ingreso de Productos" icon="pi pi-arrow-circle-right" iconPos="right"
+                (onClick)="activeIndex = 1"></p-button>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Detalle">
+        <div class="flex flex-wrap">
+            <div class="flex flex-wrap w-12 md:w-9">
+                <!-- Buscar Producto -->
+                <div class="flex flex-wrap w-12 align-items-center">
+                    <div class="col-fixed flex w-6rem">
+                        <p class="m-0"><strong>Producto</strong></p>
+                    </div>
+                    <div class="col-12 md:w-3">
+                        <input pInputText type="text" class="w-full">
+                    </div>
+                    <div class="col-fixed w-15rem">
+                        <p><strong>Precio Unitario: </strong>{{1 | currency:'USD':'$':'1.2-2'}}</p>
+                    </div>
+                    <div class="col-fixed w-5rem">
+                        <p><strong>Cantidad</strong></p>
+                    </div>
+                    <div class="col-fixed w-10rem">
+                        <p-inputNumber inputStyleClass="text-center"></p-inputNumber>
+                    </div>
+                    <div class="col text-left">
+                        <p-button icon="pi pi-plus"></p-button>
+                    </div>
+                </div>
+                <!-- Lista de productos -->
+                <div class="block w-12">
+                    <p-table [value]="[1,2,3,4,5]" [tableStyle]="{ 'width': '100%' }">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="w-1 text-center">COD</th>
+                                <th class="w-3 text-left">Nombre</th>
+                                <th class="w-2 text-right">Precio U</th>
+                                <th class="w-2 text-right">Descto U</th>
+                                <th class="w-2 text-right">Cantidad</th>
+                                <th class="w-2 text-right">Subtotal</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-product>
+                            <tr>
+                                <td class="w-1 text-center">{{ 'COD00000' }}</td>
+                                <td class="w-3 text-left">{{ 'Producto' }}</td>
+                                <td class="w-2 text-right">{{ 1|number:'1.4-4' }}</td>
+                                <td class="w-2 text-right">{{ 0|number:'1.4-4' }}</td>
+                                <td class="w-2 text-right">{{ 1|number:'1.2-2' }}</td>
+                                <td class="w-2 text-right">{{ 1|number:'1.2-2' }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+            <div class="w-12 md:w-3 p-0 md:pl-4">
+                <p-panel header="Resumen" styleClass="w-full">
+                    <div class="flex flex-wrap">
+                        <div class="flex flex-wrap">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>Base 0%</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>Base 12%</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>Descuento</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>IVA</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>ICE</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>TOTAL</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+                <div class="text-center mt-4">
+                    <p-button label="Proceder al Pago" icon="pi pi-dollar" iconPos="right"
+                        styleClass="p-button-success w-full" (onClick)="activeIndex = 2;"></p-button>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Pago">
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-6 p-2">
+                <p-panel header="Resumen de Pagos">
+                    <div class="flex flex-wrap">
+                        <div class="flex w-full w-6">
+                            <div class="col-fixed flex align-items-center w-8rem">
+                                <p class="m-0"><strong>Total Factura</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex w-full w-6">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>Por cubrir</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="flex flex-wrap">
+                        <div class="flex w-12">
+                            <div class="col-fixed flex align-items-center w-9rem">
+                                <p class="m-0"><strong>Forma de Pago</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex w-4">
+                            <div class="col-fixed flex align-items-center w-4rem">
+                                <p class="m-0"><strong>Monto</strong></p>
+                            </div>
+                            <div class="col">
+                                <p-inputNumber class="w-full"></p-inputNumber>
+                            </div>
+                        </div>
+                        <div class="flex col">
+                            <div class="col-fixed flex align-items-center w-6rem">
+                                <p class="m-0"><strong>Referencia</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="w-5rem flex align-items-center justify-content-center">
+                            <p-button icon="pi pi-plus"></p-button>
+                        </div>
+                    </div>
+                    <hr>
+                    <p-table [value]="[1]">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="w-1">Quitar</th>
+                                <th class="w-3">Pago</th>
+                                <th class="w-4">Referencia</th>
+                                <th class="w-3 text-right">Total</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-product>
+                            <tr>
+                                <td class="w-1"><p-button icon="pi pi-times" styleClass="p-button-danger"></p-button></td>
+                                <td class="w-3">Efectivo</td>
+                                <td class="w-4">-</td>
+                                <td class="w-3 text-right">{{100 | number:'1.2-2'}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </p-panel>
+            </div>
+            <div class="w-full md:w-6 p-2">
+                <p-panel header="Registro del Pago">
+                    <div class="flex flex-wrap">
+                        <div class="flex w-full">
+                            <div class="col-fixed flex align-items-center w-10rem">
+                                <p class="m-0"><strong>Total a pagar</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full">
+                            </div>
+                        </div>
+                        <div class="flex w-full">
+                            <div class="col-fixed flex align-items-center w-10rem">
+                                <p class="m-0"><strong>Tipo de Pago</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full"
+                                    placeholder="Forma de pago elegida por el cliente (puede ser múltiples pagos)">
+                            </div>
+                        </div>
+                        <div class="flex w-full">
+                            <div class="col-fixed flex align-items-center w-10rem">
+                                <p class="m-0"><strong>Pago SRI</strong></p>
+                            </div>
+                            <div class="col">
+                                <input pInputText type="text" readonly class="w-full"
+                                    placeholder="Forma de pago que recibe el SRI (referente al sistem financiero)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p-button label="Registrar Pago" icon="pi pi-money-bill"></p-button>
+                    </div>
+                </p-panel>
+            </div>
+        </div>
+        <div class="flex flex-wap">
+        </div>
+    </p-tabPanel>
+</p-tabView>
